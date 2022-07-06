@@ -15,7 +15,7 @@ public class CustomerEntity {
 
     @Id
     @Column("id")
-    private String id;
+    private Integer id;
 
     @Column("name")
     private String name;

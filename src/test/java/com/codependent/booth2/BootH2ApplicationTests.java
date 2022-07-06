@@ -20,7 +20,10 @@ class BootH2ApplicationTests {
     @Test
     void shouldSaveAndLoadUsers() {
 
-        customerRepository.save(new CustomerEntity(null, "Joe")).block();
+        CustomerEntity joe = customerRepository.save(new CustomerEntity(null, "Joe")).block();
+
+        customerRepository.findById(joe.getId()).block();
+
         StepVerifier.create(customerRepository.findAll().collectList())
                 .expectNextCount(1)
                 .verifyComplete();
